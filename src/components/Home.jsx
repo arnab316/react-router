@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 const Home = () => {
+  const [name, setName] = useState("Arnab");
   return (
     <>
       <div className="text-3xl font-extrabold ">Home Component</div>
@@ -16,7 +18,7 @@ const Home = () => {
         <Link to="/test">Go to Test</Link>
       </p>
       <div>
-        <Outlet />
+        <Outlet context={{ name }} />
       </div>
     </>
   );

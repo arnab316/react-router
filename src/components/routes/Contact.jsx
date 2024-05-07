@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { contact } from "../../utills";
 
@@ -8,6 +8,8 @@ import { contact } from "../../utills";
 // }
 
 export default function Contact() {
+  const context = useOutletContext();
+
   const { avatar, first, last, notes } = contact;
   // const { avatar, first, last, notes } = useLoaderData();
   return (
@@ -26,6 +28,7 @@ export default function Contact() {
           </Link>
         </p>
         <p className="text-md">{notes}</p>
+        <p>{context.name}</p>
       </div>
     </div>
   );

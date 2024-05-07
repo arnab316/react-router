@@ -161,3 +161,25 @@ const Product = () => {
   return <div>Product</div>;
 }
 ```
+
+### useOutletContext
+
+- Often parent routes manage state or other values you want shared with child routes. You can create your own context provider if you like, but this is such a common situation that it's built-into <Outlet />:
+
+```
+function Parent() {
+  const [count, setCount] = React.useState(0);
+  return <Outlet context={[count, setCount]} />;
+}
+```
+
+```
+
+import { useOutletContext } from "react-router-dom";
+
+function Child() {
+  const [count, setCount] = useOutletContext();
+  const increment = () => setCount((c) => c + 1);
+  return <button onClick={increment}>{count}</button>;
+}
+```
